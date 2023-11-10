@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Peach xmlns="http://peachfuzzer.com/2012/Peach" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://peachfuzzer.com/2012/Peach ../peach.xsd">
+
+
+<DataModel name="Package_SD"  >
+    <Number name="Service_ID" size="16" valueType="hex" value = "ff ff"  endian="network"   />
+    <Number name="Method_ID" size="16" valueType="hex" value = "81 00"  endian="network"   />
+    <Number name="Length" size="32" valueType="hex" value = "00 00 00 3c"  endian="network"   />
+    <Number name="Client_ID" size="16" valueType="hex" value = "00 00"  endian="network"   />
+    <Number name="Session_ID" size="16" valueType="hex" value = "00 07"  endian="network"   />
+    <Number name="SOME-IP_Version" size="8" valueType="hex" value = "01"  endian="network"   />
+    <Number name="Interface_Version" size="8" valueType="hex" value = "01"  endian="network"   />
+    <String name="Message_Type" value = "Notification" length="12" lengthType="chars"    />
+    <String name="Return_Code" value = "Ok" length="2" lengthType="chars"   />
+
+    <!-- SD -->
+    <Number name="Flags" size="8" valueType="hex" value = "c0"  endian="network"   />
+    <Number name="Reserved" size="24" valueType="hex" value = "00 00 00"  endian="network"   />
+    <Number name="Length_of_Entries_Array" size="32" valueType="hex" value = "00 00 00 10"  endian="network"   />
+    <Block name="Entries_Array"  >
+        <String name="Type" value = "Offer Service" length="13" lengthType="chars"   />
+        <Number name="Index_1" size="8" valueType="hex" value = "00"  endian="network"   />
+        <Number name="Index_2" size="8" valueType="hex" value = "00"  endian="network"   />
+        <Number name="Opts" size="8" valueType="hex" value = "20"  endian="network"   />
+        <Number name="Service_ID" size="16" valueType="hex" value = "10 01"  endian="network"   />
+        <Number name="Instance_ID" size="16" valueType="hex" value = "10 01"  endian="network"   />
+        <Number name="Major_Version" size="8" valueType="hex" value = "01"  endian="network"   />
+        <Number name="TTL" size="24" valueType="hex" value = "00 00 03"  endian="network"   />
+        <Number name="Minor_Version" size="32" valueType="hex" value = "00 00 00 00"  endian="network"   />
+    </Block>
+    <Number name="Length_of_Options_Array" size="32" valueType="hex" value = "00 00 00 18"  endian="network"   />
+    <Block name="Options_Array"  >
+        <Block name="0:_IPv4_Endpoint_Option_(10.0.32.0:30002_(UDP))"  >
+            <Number name="Length" size="16" valueType="hex" value = "00 09"  endian="network"   />
+            <Number name="Type" size="8" valueType="hex" value = "04"  endian="network"   />
+            <Number name="Reserved" size="8" valueType="hex" value = "00"  endian="network"   />
+            <Number name="IPv4_address" size="32" valueType="hex" value = "0a 00 20 00"  endian="network"   />
+            <Number name="Reserved_2" size="8" valueType="hex" value = "00"  endian="network"   />
+            <String name="Protocol" value = "UDP" length="3" lengthType="chars"   />
+            <Number name="Port" size="16" valueType="hex" value = "75 32"  endian="network"   />
+        </Block>
+        <Block name="1:_IPv4_Endpoint_Option_(10.0.32.0:30001_(TCP))"  >
+            <Number name="Length" size="16" valueType="hex" value = "00 09"  endian="network"   />
+            <Number name="Type" size="8" valueType="hex" value = "04"  endian="network"   />
+            <Number name="Reserved" size="8" valueType="hex" value = "00"  endian="network"   />
+            <Number name="IPv4_address" size="32" valueType="hex" value = "0a 00 20 00"  endian="network"   />
+            <Number name="Reserved_2" size="8" valueType="hex" value = "00"  endian="network"   />
+            <String name="Protocol" value = "TCP" length="3" lengthType="chars"   />
+            <Number name="Port" size="16" valueType="hex" value = "75 31"  endian="network"   />
+        </Block>
+    </Block>
+
+</DataModel>
+
+<DataModel name="Package_SOMEIP"  >
+    <Number name="Service_ID" size="16" valueType="hex" value = "10 01"  endian="network"   />
+    <Number name="Method_ID" size="16" valueType="hex" value = "00 01"  endian="network"   />
+    <Number name="Length" size="32" valueType="hex" value = "00 00 00 0c"  endian="network"   />
+    <Number name="Client_ID" size="16" valueType="hex" value = "1e 61"  endian="network"   />
+    <Number name="Session_ID" size="16" valueType="hex" value = "00 01"  endian="network"   />
+    <Number name="SOME-IP_Version" size="8" valueType="hex" value = "01"  endian="network"   />
+    <Number name="Interface_Version" size="8" valueType="hex" value = "01"  endian="network"   />
+    <String name="Message_Type" value = "Request no response" length="19" lengthType="chars"    />
+    <String name="Return_Code" value = "Ok" length="2" lengthType="chars"   />
+    <String name="Payload" value = "00000000" length="8" lengthType="chars"   />
+</DataModel>
+
+</Peach>
+<!-- end -->

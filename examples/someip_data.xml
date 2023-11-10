@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Peach xmlns="http://peachfuzzer.com/2012/Peach" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://peachfuzzer.com/2012/Peach ../peach.xsd">
+
+
+<DataModel name="Package_SD" mutable="false">
+    <Number name="Service_ID" size="16" valueType="hex" value = "ff ff"  endian="network" mutable="false" />
+    <Number name="Method_ID" size="16" valueType="hex" value = "81 00"  endian="network" mutable="false" />
+    <Number name="Length" size="32" valueType="hex" value = "00 00 00 30"  endian="network" mutable="false" />
+    <Number name="Client_ID" size="16" valueType="hex" value = "00 00"  endian="network" mutable="false" />
+    <Number name="Session_ID" size="16" valueType="hex" value = "00 01"  endian="network" mutable="false" />
+    <Number name="SOME-IP_Version" size="8" valueType="hex" value = "01"  endian="network" mutable="false" />
+    <Number name="Interface" size="8" valueType="hex" value = "01"  endian="network" mutable="false" />
+    <Number name="Message_Type" size="8" valueType="hex" value = "02"  endian="network" mutable="false" />
+    <Number name="Return_Code" size="8" valueType="hex" value = "00"  endian="network" mutable="false" />
+
+    <!-- SD -->
+    <Number name="Flags" size="8" valueType="hex" value = "c0"  endian="network" mutable="false" />
+    <Number name="Reserved" size="24" valueType="hex" value = "00 00 00"  endian="network" mutable="false" />
+    <Number name="Length_of_Entries_Array" size="32" valueType="hex" value = "00 00 00 10"  endian="network" mutable="false" />
+    <Block name="Entried_Array" mutable="false">
+        <Number name="Type" size="8" valueType="hex" value = "06"  endian="network" mutable="false" />
+        <Number name="Index_1" size="8" valueType="hex" value = "00"  endian="network" mutable="false" />
+        <Number name="Index_2" size="8" valueType="hex" value = "00"  endian="network" mutable="false" />
+        <Number name="Opts" size="8" valueType="hex" value = "10"  endian="network" mutable="false" />
+        <Number name="Service_ID" size="16" valueType="hex" value = "12 34"  endian="network" mutable="false" />
+        <Number name="Instance_ID" size="16" valueType="hex" value = "56 78"  endian="network" mutable="false" />
+        <Number name="Major_Version" size="8" valueType="hex" value = "00"  endian="network" mutable="false" />
+        <Number name="TTL" size="24" valueType="hex" value = "00 00 03"  endian="network" mutable="false" />
+        <Number name="Reserved" size="8" valueType="hex" value = "00"  endian="network" mutable="false" />
+        <Number name="Initial_Event_Request" size="8" valueType="hex" value = "00"  endian="network" mutable="false" />
+        <Number name="Eventgroup_ID" size="16" valueType="hex" value = "44 65"  endian="network" mutable="false" />
+    </Block>
+    <Number name="Length_of_Options_Array" size="32" valueType="hex" value = "00 00 00 0c"  endian="network" mutable="false" />
+    <Block name="Options_Array" mutable="false">
+        <Number name="Length" size="16" valueType="hex" value = "00 09"  endian="network" mutable="false" />
+        <Number name="Type" size="8" valueType="hex" value = "04"  endian="network" mutable="false" />
+        <Number name="Reserved" size="8" valueType="hex" value = "00"  endian="network" mutable="false" />
+        <Number name="IPv4_addr" size="32" valueType="hex" value = "c0 a8 03 11"  endian="network" mutable="false" />
+        <Number name="Reserved_2" size="8" valueType="hex" value = "00"  endian="network" mutable="false" />
+        <Number name="Protocol" size="8" valueType="hex" value = "11"  endian="network" mutable="false" />
+        <Number name="Port" size="16" valueType="hex" value = "9c c9"  endian="network" mutable="false" />
+    </Block>
+
+</DataModel>
+
+
+<DataModel name="Package_SOMEIP" mutable="false">
+    <Number name="Service_ID" size="16" valueType="hex" value = "12 34"  endian="network" mutable="false" />
+    <Number name="Method_ID" size="16" valueType="hex" value = "00 01"  endian="network" mutable="false" />
+    <Number name="Length" size="32" valueType="hex" value = "00 00 00 08"  endian="network" mutable="false" />
+    <Number name="Client_ID" size="16" valueType="hex" value = "13 44"  endian="network" mutable="false" />
+    <Number name="Session_ID" size="16" valueType="hex" value = "00 01"  endian="network" mutable="false" />
+    <Number name="SOME-IP_Version" size="8" valueType="hex" value = "01"  endian="network" mutable="false" />
+    <Number name="Interface_Version" size="8" valueType="hex" value = "00"  endian="network" mutable="false" />
+    <Number name="Message_Type" size="8" valueType="hex" value = "00"  endian="network" mutable="false" />
+    <Number name="Return_Code" size="8" valueType="hex" value = "00"  endian="network" mutable="false" />
+</DataModel>
+
+</Peach>
+<!-- end -->

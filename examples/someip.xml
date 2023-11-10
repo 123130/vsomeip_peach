@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Peach xmlns="http://peachfuzzer.com/2012/Peach" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://peachfuzzer.com/2012/Peach ../peach.xsd">
+
+<Include ns="someip" src="/opt/peach/xml/vsomeip/someip_data.xml"/>
+<Include ns="someip_mutable" src="/opt/peach/xml/vsomeip/someip_data_mutable.xml"/>
+
+<StateModel name="SomeipModel" initialState="test">
+		<State name="test">
+
+			<!-- test_Subscribe -->
+
+			<Action type="output" publisher="remo">
+				<DataModel ref="someip_mutable:Package_SD" />
+			</Action>
+
+			<!-- test_DATA --> 
+
+			<Action type="output" publisher="remo">
+				<DataModel ref="someip:Package_SD" />
+			</Action>
+
+           <Action type="output" publisher="remo1">
+				<DataModel ref="someip_mutable:Package_SOMEIP" />
+			</Action>
+
+		</State>
+</StateModel>
+
+
+<Agent name="LinAgent2" >
+    <Monitor class="Process">
+            <Param name="Executable" value="/opt/vsomeip-master/build/examples/notify-sample" />
+            <Param name="Arguments" value="" />
+            <Param name="RestartOnEachTest" value="false" />
+			<Param name="Faultonearlyexit" value="true" />
+    </Monitor>
+</Agent>
+
+<Agent name="remote" location="tcp://192.168.3.17:9001" />
+
+<Test name="Default">
+	<Agent ref="LinAgent2" platform="linux"/> 
+ 	<Agent ref="remote"/>
+	<StateModel ref="SomeipModel"/>
+
+	<Publisher class="Remote" name="remo">
+		<Param name="Agent" value="remote" />
+		<Param name="Class" value="Udp" />
+		<Param name="Host" value="192.168.3.31" />
+        <Param name="SrcPort" value="30490" />
+		<Param name="Port" value="30490" />
+	</Publisher>
+
+	<Publisher class="Remote" name="remo1">
+		<Param name="Agent" value="remote" />
+		<Param name="Class" value="Udp" />
+		<Param name="Host" value="192.168.3.31" />
+		<Param name="SrcPort" value="40137" />
+        <Param name="Port" value="30509" />
+        </Publisher>
+
+	<Logger class="File">
+		<Param name="Path" value="logs-someip" />
+	</Logger>
+</Test>
+
+</Peach>
+<!-- end -->
